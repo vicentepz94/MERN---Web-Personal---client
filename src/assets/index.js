@@ -13,6 +13,7 @@ const image = {
   authBg,
   homeBanner,
   noAvatar,
+  academyLogo,
 };
 
 export { Icon, image };
