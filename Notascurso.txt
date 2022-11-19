@@ -3,4 +3,5 @@ Dependencias instaladas en cliente
 2.- Semantic UI React: CDN (no bundler) para elementos de interfaz con React
 3.- Lodash: Libreria de utilidad de JavaScript, funciones basicas de JavaScript pero mejoradas
 
+
 79.- Se elimina en index.js las etiquetas <Strictmode> de react que rodean "root.render(<App />);" para evitar error "deprecated"
