@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { Form } from "semantic-ui-react";
 import { useFormik } from "formik";
+import { Auth } from "../../../../api";
 import { initialValues, validationSchema } from "./RegisterForm.form";
 import "./RegisterForm.scss";
 
-export function RegisterForm() {
+const authController = new Auth();
+
+// Le pasamos props a la funcion de openLogin
+export function RegisterForm(props) {
+  const { openLogin } = props;
   const [error, setError] = useState("");
 
   const formik = useFormik({
@@ -14,9 +19,12 @@ export function RegisterForm() {
 
     onSubmit: async (formValue) => {
       try {
-        console.log(formValue);
+        setError("");
+        //Esperamos la funcion de registrar y ejecutamos destructuring de openLogin
+        await authController.register(formValue);
+        openLogin();
       } catch (error) {
-        console.error(error);
+        setError("Error en el servidor");
       }
     },
   });

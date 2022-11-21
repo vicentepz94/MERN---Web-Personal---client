@@ -10,3 +10,5 @@ Dependencias instaladas en cliente
 79.- Se elimina en index.js las etiquetas <Strictmode> de react que rodean "root.render(<App />);" para evitar error "deprecated"
 87.- Se extiende la ruta en web/index.js para exportar a la pagina(y carpeta) Home con "../web/Home" en vez de "./Home"
 93.- Para utilizar Formik en registerForm.js se crea RegisterForm.form.js donde se guarda la configuracion del formulario
+95.- Se crea carpeta src/utils para crear constantes y definir el basepath del servidor
+Luego se crea un directorio para ejecutar las peticiones HTTP, en src/api
