@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Tab } from "semantic-ui-react";
 import { Icon } from "../../../assets";
 import "./Auth.scss";
+import { RegisterForm } from "../../../components/Admin/Auth";
 
 export function Auth() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -21,7 +22,7 @@ export function Auth() {
       menuItem: "Nuevo Usuario",
       render: () => (
         <Tab.Pane>
-          <h2>Register FORM</h2>
+          <RegisterForm openLogin={openLogin} />
         </Tab.Pane>
       ),
     },
