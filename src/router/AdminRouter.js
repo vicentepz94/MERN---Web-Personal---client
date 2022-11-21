@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { Auth, Users, Blog, Courses, Menu, Newsletter } from "../pages/admin";
 import { AdminLayout } from "../layouts/AdminLayout";
 
-const user = { email: "vicentepz94@gmail.com" };
+const user = null;
 
 export function AdminRouter() {
   const loadLayout = (Layout, Page) => {
@@ -17,7 +17,8 @@ export function AdminRouter() {
   return (
     <Routes>
       {!user ? (
-        <Route path="/admin/*" element={loadLayout(AdminLayout, Auth)} />
+        // Para no cargar el layout mientras no estes logeado como admin se quita el elemento AdminLayout
+        <Route path="/admin/*" element={<Auth />} />
       ) : (
         <>
           {["/admin", "/admin/blog"].map((path) => (
