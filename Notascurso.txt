@@ -12,3 +12,7 @@ Dependencias instaladas en cliente
 93.- Para utilizar Formik en registerForm.js se crea RegisterForm.form.js donde se guarda la configuracion del formulario
 95.- Se crea carpeta src/utils para crear constantes y definir el basepath del servidor
 Luego se crea un directorio para ejecutar las peticiones HTTP, en src/api
+97~98.- Hay pequeñas diferencias entre el Login y el Register, poner atencion en:
+    a)la creacion de la constante formik
+    b)login no lleva useState error y validateError en el formulario
+    c)en api auth, el body tipo json solo lleva stringify de (data) en vez de data.email y data.password

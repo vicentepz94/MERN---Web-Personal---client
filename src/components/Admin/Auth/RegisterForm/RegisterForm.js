@@ -7,7 +7,7 @@ import "./RegisterForm.scss";
 
 const authController = new Auth();
 
-// Le pasamos props a la funcion de openLogin
+// Le pasamos props a la funcion de openLogin (que envia a la pagina principal cuando un usuario esta logeado)
 export function RegisterForm(props) {
   const { openLogin } = props;
   const [error, setError] = useState("");
