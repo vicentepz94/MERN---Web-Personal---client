@@ -2,14 +2,13 @@ import React from "react";
 import { Form } from "semantic-ui-react";
 import { useFormik } from "formik";
 import { Auth } from "../../../../api";
+import { useAuth } from "../../../../hooks";
 import { initialValues, validationSchema } from "./LoginForm.form";
 import "./LoginForm.scss";
-import { useAuth } from "../../../../hooks";
 
 const authController = new Auth();
 
 export function LoginForm() {
-  //const { openLogin } = props;
   const { login } = useAuth();
 
   const formik = useFormik({
@@ -24,7 +23,6 @@ export function LoginForm() {
         authController.setRefreshToken(response.refresh);
 
         login(response.access);
-        //openLogin();
       } catch (error) {
         throw error;
       }

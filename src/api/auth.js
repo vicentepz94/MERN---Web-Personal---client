@@ -53,7 +53,7 @@ export class Auth {
   }
 
   getAccessToken() {
-    localStorage.getItem(ENV.JWT.ACCESS);
+    return localStorage.getItem(ENV.JWT.ACCESS);
   }
 
   setRefreshToken(token) {
@@ -61,7 +61,7 @@ export class Auth {
   }
 
   getRefreshToken() {
-    localStorage.getItem(ENV.JWT.REFRESH);
+    return localStorage.getItem(ENV.JWT.REFRESH);
   }
 
   removeTokens() {
