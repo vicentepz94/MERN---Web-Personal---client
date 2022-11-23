@@ -8,8 +8,8 @@ import { useAuth } from "../../../../hooks";
 
 const authController = new Auth();
 
-export function LoginForm(props) {
-  const { openLogin } = props;
+export function LoginForm() {
+  //const { openLogin } = props;
   const { login } = useAuth();
 
   const formik = useFormik({
@@ -19,8 +19,12 @@ export function LoginForm(props) {
     onSubmit: async (formValue) => {
       try {
         const response = await authController.login(formValue);
+
+        authController.setAccessToken(response.access);
+        authController.setRefreshToken(response.refresh);
+
         login(response.access);
-        openLogin();
+        //openLogin();
       } catch (error) {
         throw error;
       }
