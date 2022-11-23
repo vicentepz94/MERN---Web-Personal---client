@@ -1,4 +1,7 @@
 import { useState, useEffect, createContext } from "react";
+import { User } from "../api";
+
+const userController = new User();
 
 export const AuthContext = createContext();
 
@@ -12,8 +15,17 @@ export function AuthProvider(props) {
   }, []);
 
   const login = async (accessToken) => {
-    console.log("Login Context");
-    console.log(accessToken);
+    try {
+      const response = await userController.getMe(accessToken);
+      // Para eliminar la contraseña de getMe
+      delete response.password;
+
+      //console.log(response);
+      setToken(response);
+      setUser(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const data = {

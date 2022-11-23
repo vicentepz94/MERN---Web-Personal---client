@@ -16,3 +16,4 @@ Luego se crea un directorio para ejecutar las peticiones HTTP, en src/api
     a)la creacion de la constante formik
     b)login no lleva useState error y validateError en el formulario
     c)en api auth, el body tipo json solo lleva stringify de (data) en vez de data.email y data.password
+99.- Para gestionar la sesion se utiliza Context y un hook personalizado

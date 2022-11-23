@@ -4,11 +4,13 @@ import { useFormik } from "formik";
 import { Auth } from "../../../../api";
 import { initialValues, validationSchema } from "./LoginForm.form";
 import "./LoginForm.scss";
+import { useAuth } from "../../../../hooks";
 
 const authController = new Auth();
 
 export function LoginForm(props) {
   const { openLogin } = props;
+  const { login } = useAuth();
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -17,10 +19,10 @@ export function LoginForm(props) {
     onSubmit: async (formValue) => {
       try {
         const response = await authController.login(formValue);
-        console.log(response);
+        login(response.access);
         openLogin();
       } catch (error) {
-        console.log(error);
+        throw error;
       }
     },
   });
