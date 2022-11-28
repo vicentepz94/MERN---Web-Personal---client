@@ -5,6 +5,7 @@ Dependencias instaladas en cliente
 4.- Formik: Administrar y controlar formularios
 5.- Yup: Sirve para realizar Validaciones, se implementara con Formik
 6.- React-Router-Dom: Utilizado para administrar el sistema de rutas front-end, se instala dependencia "npm i react-router-dom".
+7.- Jwt-decode: Para decodificar tokens "npm i jwt-decode"
 
 
 79.- Se elimina en index.js las etiquetas <Strictmode> de react que rodean "root.render(<App />);" para evitar error "deprecated"
@@ -19,3 +20,4 @@ Luego se crea un directorio para ejecutar las peticiones HTTP, en src/api
 99.- Para gestionar la sesion se utiliza Context y un hook personalizado
 102.- Utilizacion de constantes para cambiar una funcion y que reemplaze todos los valores que utilizen la misma funcion,
     En login form se quitan los props de la funcion LoginForm y openLogin(); de formik
+103.- Se crea funcion anonima para utilizar el useEffect(que se ejecuta cada vez que refrescamos o abrimos la app), (async= ()=> {})()
