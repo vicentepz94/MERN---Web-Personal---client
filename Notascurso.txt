@@ -21,3 +21,5 @@ Luego se crea un directorio para ejecutar las peticiones HTTP, en src/api
 102.- Utilizacion de constantes para cambiar una funcion y que reemplaze todos los valores que utilizen la misma funcion,
     En login form se quitan los props de la funcion LoginForm y openLogin(); de formik
 103.- Se crea funcion anonima para utilizar el useEffect(que se ejecuta cada vez que refrescamos o abrimos la app), (async= ()=> {})()
+104.- Error estaba en la falta del segundo "!" la expresion de condicion if(!accessToken && !refreshToken)
+        Para que el login funcione tiene que estar en la path /admin y no /admin/login
