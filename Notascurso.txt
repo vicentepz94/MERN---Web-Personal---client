@@ -7,6 +7,15 @@ Dependencias instaladas en cliente
 6.- React-Router-Dom: Utilizado para administrar el sistema de rutas front-end, se instala dependencia "npm i react-router-dom".
 7.- Jwt-decode: Para decodificar tokens "npm i jwt-decode"
 
+observaciones del curso:
+
+1) Clase 108: Para que el menu este activo la ruta debe ser igual a la que indica el menu, pero esto significa que si escribo admin/loquesea estando
+deslogueado me mostrara el componente <Auth /> con la ruta admin/loquesea, y una vez loguee con exito, seguire teniendo la ruta
+admin/loquesea, lo cual significa que ningun menu estara activo ya que no matchea la ruta con el menu.
+2) Clase 109: Se pueden seguir viendo y accediendo a los componentes de admin siendo usuario solo escribiendo la ruta
+
+
+
 
 79.- Se elimina en index.js las etiquetas <Strictmode> de react que rodean "root.render(<App />);" para evitar error "deprecated"
 87.- Se extiende la ruta en web/index.js para exportar a la pagina(y carpeta) Home con "../web/Home" en vez de "./Home"
