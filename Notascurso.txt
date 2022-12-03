@@ -6,6 +6,7 @@ Dependencias instaladas en cliente
 5.- Yup: Sirve para realizar Validaciones, se implementara con Formik
 6.- React-Router-Dom: Utilizado para administrar el sistema de rutas front-end, se instala dependencia "npm i react-router-dom".
 7.- Jwt-decode: Para decodificar tokens "npm i jwt-decode"
+8.- ReactDropZone: para controlar el avatar del usuario, drag de imagenes
 
 observaciones del curso:
 
