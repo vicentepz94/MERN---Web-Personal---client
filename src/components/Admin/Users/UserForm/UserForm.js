@@ -1,36 +1,78 @@
 import React from "react";
 import { Form, Image } from "semantic-ui-react";
+import { useFormik } from "formik";
+import { initialValues, validationSchema } from "./UserForm.form";
+import "./UserForm.scss";
 
 export function UserForm(props) {
   // onReload cargara la lista de usuarios de forma instantanea al momento de agregar un nuevo usuario y
   // user es la informacion del usuario a actualizar o agregar
   const { close, onReload, user } = props;
+
+  const formik = useFormik({
+    initialValues: initialValues(),
+    validationSchema: validationSchema(),
+    validateOnChange: false,
+
+    onSubmit: async (formValue) => {
+      try {
+        console.log(formValue);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  });
+
   return (
-    <Form className="user-form">
+    <Form className="user-form" onSubmit={formik.handleSubmit}>
       <div className="user-form__avatar">
         <span>AVATAR</span>
       </div>
 
       <Form.Group widths="equal">
-        <Form.Input className="firstname" placeholder="Nombre" />
-        <Form.Input className="lasttname" placeholder="Apellidos" />
+        <Form.Input
+          name="firstname"
+          placeholder="Nombre"
+          onChange={formik.handleChange}
+          value={formik.values.firstname}
+          error={formik.errors.firstname}
+        />
+        <Form.Input
+          name="lastname"
+          placeholder="Apellidos"
+          onChange={formik.handleChange}
+          value={formik.values.lastname}
+          error={formik.errors.lastname}
+        />
       </Form.Group>
 
       <Form.Group widths="equal">
-        <Form.Input className="email" placeholder="Correo electrónico" />
+        <Form.Input
+          name="email"
+          placeholder="Correo electrónico"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+          error={formik.errors.email}
+        />
         <Form.Dropdown
           placeholder="Selecciona un rol"
           options={roleOptions}
           selection
+          onChange={(_, data) => formik.setFieldValue("role", data.value)}
+          value={formik.values.role}
+          error={formik.errors.role}
         />
       </Form.Group>
 
       <Form.Input
         type="password"
-        className="password"
+        name="password"
         placeholder="Contraseña"
+        onChange={formik.handleChange}
+        value={formik.values.password}
+        error={formik.errors.password}
       />
-      <Form.Button type="submit" primary fluid>
+      <Form.Button type="submit" primary fluid loading={formik.isSubmitting}>
         {user ? "Actualizar usuario " : "Crear usuario"}
       </Form.Button>
     </Form>

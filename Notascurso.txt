@@ -14,6 +14,9 @@ deslogueado me mostrara el componente <Auth /> con la ruta admin/loquesea, y una
 admin/loquesea, lo cual significa que ningun menu estara activo ya que no matchea la ruta con el menu.
 2) Clase 109: Se pueden seguir viendo y accediendo a los componentes de admin siendo usuario solo escribiendo la ruta
 
+Notas globales:
+Formik y Yup: entender como funcionan y conversan estas caracteristicas con los formularios
+
 
 
 
