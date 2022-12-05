@@ -15,19 +15,11 @@ export function Users() {
   const panes = [
     {
       menuItem: "Usuarios activos",
-      render: () => (
-        <Tab.Pane attached={false}>
-          <h2>Usuarios activos</h2>
-        </Tab.Pane>
-      ),
+      render: () => <Tab.Pane attached={false}></Tab.Pane>,
     },
     {
       menuItem: "Usuarios inactivos",
-      render: () => (
-        <Tab.Pane attached={false}>
-          <h2>Usuarios inactivos</h2>
-        </Tab.Pane>
-      ),
+      render: () => <Tab.Pane attached={false}></Tab.Pane>,
     },
   ];
 

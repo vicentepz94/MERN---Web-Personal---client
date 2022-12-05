@@ -22,4 +22,38 @@ export class User {
       throw error;
     }
   }
+
+  // Para mandar peticiones que sean multypart y no JSON (solo texto) se utiliza el formData
+  // Para evitar crear data por cada elemento (ej: formData.append("firstname", data.firstname)) se utiliza el Object key para transformar
+  // los datos en un array
+  async createUser(accessToken, data) {
+    try {
+      const formData = new FormData();
+      Object.keys(data).forEach((key) => {
+        formData.append(key, data[key]);
+        // console.log(`${key} = ${data[key]}`);
+        //console.log(key);
+      });
+
+      if (data.fileAvatar) {
+        formData.append("avatar", data.fileAvatar);
+      }
+
+      const url = `${this.baseApi}/${ENV.API_ROUTES.USER}`;
+      const params = {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: formData,
+      };
+      const response = await fetch(url, params);
+      const result = await response.json();
+
+      if (response.status !== 201) throw result;
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

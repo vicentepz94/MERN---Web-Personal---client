@@ -4,12 +4,17 @@ import { useFormik } from "formik";
 import { useDropzone } from "react-dropzone";
 import { image } from "../../../../assets";
 import { initialValues, validationSchema } from "./UserForm.form";
+import { User } from "../../../../api";
+import { useAuth } from "../../../../hooks";
 import "./UserForm.scss";
+
+const userController = new User();
 
 export function UserForm(props) {
   // onReload cargara la lista de usuarios de forma instantanea al momento de agregar un nuevo usuario y
   // user es la informacion del usuario a actualizar o agregar
   const { close, onReload, user } = props;
+  const { accessToken } = useAuth();
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -18,7 +23,8 @@ export function UserForm(props) {
 
     onSubmit: async (formValue) => {
       try {
-        console.log(formValue);
+        await userController.createUser(accessToken, formValue);
+        close();
       } catch (error) {
         console.error(error);
       }
