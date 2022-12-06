@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Tab, Button } from "semantic-ui-react";
 import { BasicModal } from "../../../components/Shared";
-import { UserForm } from "../../../components/Admin/Users";
+import { UserForm, ListUsers } from "../../../components/Admin/Users";
+
 import "./Users.scss";
 
 export function Users() {
@@ -15,11 +16,19 @@ export function Users() {
   const panes = [
     {
       menuItem: "Usuarios activos",
-      render: () => <Tab.Pane attached={false}></Tab.Pane>,
+      render: () => (
+        <Tab.Pane attached={false}>
+          <ListUsers activeUsers={true} />
+        </Tab.Pane>
+      ),
     },
     {
       menuItem: "Usuarios inactivos",
-      render: () => <Tab.Pane attached={false}></Tab.Pane>,
+      render: () => (
+        <Tab.Pane attached={false}>
+          <ListUsers activeUsers={false} />
+        </Tab.Pane>
+      ),
     },
   ];
 
