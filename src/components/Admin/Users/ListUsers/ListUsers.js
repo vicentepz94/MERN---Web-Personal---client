@@ -8,7 +8,7 @@ import { UserItem } from "../UserItem";
 const userController = new User();
 
 export function ListUsers(props) {
-  const { activeUsers } = props;
+  const { activeUsers, reload } = props;
   const [users, setUsers] = useState(null);
   const { accessToken } = useAuth();
 
@@ -28,7 +28,7 @@ export function ListUsers(props) {
         console.log(error);
       }
     })();
-  }, [activeUsers]);
+  }, [activeUsers, reload]);
 
   if (!users) return <Loader active inline="centered" />;
   if (size(users) === 0) return "No hay ningún usuario.";

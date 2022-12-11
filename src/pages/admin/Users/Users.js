@@ -9,8 +9,12 @@ export function Users() {
   // useState para abrir y cerrar el modal
   const [showModal, setShowModal] = useState(false);
 
+  const [reload, setReload] = useState(false);
+
   // Abrir y cerrar el modal (si esta abierto lo cerrara y vice versa)
   const onOpenCloseModal = () => setShowModal((prevState) => !prevState);
+
+  const onReload = () => setReload((prevState) => !prevState);
 
   // Estructura de semantic
   const panes = [
@@ -18,7 +22,7 @@ export function Users() {
       menuItem: "Usuarios activos",
       render: () => (
         <Tab.Pane attached={false}>
-          <ListUsers activeUsers={true} />
+          <ListUsers activeUsers={true} reload={reload} />
         </Tab.Pane>
       ),
     },
@@ -26,7 +30,7 @@ export function Users() {
       menuItem: "Usuarios inactivos",
       render: () => (
         <Tab.Pane attached={false}>
-          <ListUsers activeUsers={false} />
+          <ListUsers activeUsers={false} reload={reload} />
         </Tab.Pane>
       ),
     },
@@ -46,7 +50,7 @@ export function Users() {
         close={onOpenCloseModal}
         title="Crear nuevo usuario"
       >
-        <UserForm close={onOpenCloseModal} />
+        <UserForm close={onOpenCloseModal} onReload={onReload} />
       </BasicModal>
     </>
   );
