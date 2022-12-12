@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Image, Button, Icon, Confirm } from "semantic-ui-react";
 import { image } from "../../../../assets";
 import { ENV } from "../../../../utils";
+import { BasicModal } from "../../../Shared";
+import { UserForm } from "../UserForm";
 import "./UserItem.scss";
 
 export function UserItem(props) {
-  const { user } = props;
+  const { user, onReload } = props;
+  const [showModal, setShowModal] = useState(false);
+  const [titleModal, setTitleModal] = useState(false);
+
+  const onOpenCloseModal = () => setShowModal((prevState) => !prevState);
+
+  // Al hacer click en el lapiz de modificación se ejecutara la siguiente funcion
+  const openUpdateUser = () => {
+    setTitleModal(`Actualizar ${user.email}`);
+    onOpenCloseModal();
+  };
 
   return (
     <>
@@ -25,7 +37,7 @@ export function UserItem(props) {
           </div>
         </div>
         <div>
-          <Button icon primary>
+          <Button icon primary onClick={openUpdateUser}>
             <Icon name="pencil" />
           </Button>
           <Button icon color={user.active ? "orange" : "teal"}>
@@ -36,6 +48,10 @@ export function UserItem(props) {
           </Button>
         </div>
       </div>
+
+      <BasicModal show={showModal} close={onOpenCloseModal} title={titleModal}>
+        <UserForm close={onOpenCloseModal} onReload={onReload} user={user} />
+      </BasicModal>
     </>
   );
 }
