@@ -52,6 +52,22 @@ export function UserItem(props) {
     }
   };
 
+  const OpenDeleteConfirm = () => {
+    setIsDelete(true);
+    setConfirmMessage(`Eliminar usuario ${user.email}`);
+    onOpenCloseConfirm();
+  };
+
+  const onDelete = async () => {
+    try {
+      await userController.deleteUser(accessToken, user._id);
+      onReload();
+      onOpenCloseConfirm();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="user-item">
@@ -80,7 +96,7 @@ export function UserItem(props) {
           >
             <Icon name={user.active ? "ban" : "check"} />
           </Button>
-          <Button icon color="red">
+          <Button icon color="red" onClick={OpenDeleteConfirm}>
             <Icon name="trash" />
           </Button>
         </div>
@@ -93,9 +109,7 @@ export function UserItem(props) {
       <Confirm
         open={showConfirm}
         onCancel={onOpenCloseConfirm}
-        onConfirm={
-          isDelete ? () => console.log("Confirm delete") : onActivateDesactivate
-        }
+        onConfirm={isDelete ? onDelete : onActivateDesactivate}
         content={confirmMessage}
         size="mini"
       />
