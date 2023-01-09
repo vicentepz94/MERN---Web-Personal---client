@@ -1,23 +1,66 @@
 import React from "react";
 import { Form, Dropdown, Input } from "semantic-ui-react";
+import { useFormik } from "formik";
+import { initialValues, validationSchema } from "./MenuForm.form";
 
 export function MenuForm(props) {
   const { onClose, onReload, menu } = props;
+  const formik = useFormik({
+    initialValues: initialValues(),
+    validationSchema: validationSchema(),
+    validateOnChange: false,
+    onSubmit: async (formValue) => {
+      try {
+        console.log(formValue);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  });
+
   return (
-    <Form>
+    <Form onSubmit={formik.handleSubmit}>
       <Form.Group widths="equal">
-        <Form.Input name="title" placeholder="Título" />
-        <Form.Input name="number" placeholder="order" />
+        <Form.Input
+          name="title"
+          placeholder="Título"
+          onChange={formik.handleChange}
+          value={formik.values.title}
+          error={formik.errors.title}
+        />
+        <Form.Input
+          name="order"
+          type="number"
+          placeholder="order"
+          onChange={formik.handleChange}
+          value={formik.values.order}
+          error={formik.errors.order}
+        />
       </Form.Group>
 
       <Input
         name="path"
         placeholder="URL"
         fluid
-        label={!menu ? <Dropdown options={options} /> : null}
+        onChange={formik.handleChange}
+        value={formik.values.path}
+        error={formik.errors.path}
+        label={
+          !menu ? (
+            <Dropdown
+              options={options}
+              onChange={(_, data) =>
+                formik.setFieldValue("protocol", data.value)
+              }
+              value={formik.values.protocol}
+              error={formik.errors.protocol}
+            />
+          ) : null
+        }
       />
       <Form.Group />
-      <Form.Button type="submit" primary fluid>
+
+      <Form.Button type="submit" primary fluid loading={formik.isSubmitting}>
         {menu ? "Actualizar menú" : "Crear menú"}
       </Form.Button>
     </Form>
