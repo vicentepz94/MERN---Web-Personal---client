@@ -12,7 +12,7 @@ export function MenuForm(props) {
   const { accessToken } = useAuth();
 
   const formik = useFormik({
-    initialValues: initialValues(),
+    initialValues: initialValues(menu),
     validationSchema: validationSchema(),
     validateOnChange: false,
 
@@ -24,9 +24,10 @@ export function MenuForm(props) {
           order: formValue.order,
           active: formValue.active,
         };
-
+        // El _id se encuentra en el prop de menu en la linea 15
         if (menu) {
-          console.log("Update MENU");
+          data.path = formValue.path;
+          await menuController.updateMenu(accessToken, menu._id, data);
         } else {
           await menuController.createMenu(accessToken, data);
         }
