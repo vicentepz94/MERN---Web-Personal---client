@@ -38,3 +38,6 @@ Luego se crea un directorio para ejecutar las peticiones HTTP, en src/api
         Para que el login funcione tiene que estar en la path /admin y no /admin/login.
 125.- para la api de menu en la funcion getMenu, al momento de hacer el response = await fet() no es necesario poner parametros ya que es de 
     tipo Get y tampoco requiere autenticación (por lo general llevaria el accessToken obtenida del hook useAuth)
+131.- Para añadir la funcion de modificar la ruta se necesita importar la clase menu para utilizar la funcion y el hook de autorizacion
+    para utilizar una funcion dentro de un elemento de etiqueta < > se puede hacer utilizando la funcion normal sin el parentesis final o
+    con funcion de flecha () =>, de lo contrario se ejecuta cuando se abra el elemento y no cuando se le de en el boton dentro del elemento
