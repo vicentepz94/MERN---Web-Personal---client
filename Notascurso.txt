@@ -40,4 +40,5 @@ Luego se crea un directorio para ejecutar las peticiones HTTP, en src/api
     tipo Get y tampoco requiere autenticación (por lo general llevaria el accessToken obtenida del hook useAuth)
 131.- Para añadir la funcion de modificar la ruta se necesita importar la clase menu para utilizar la funcion y el hook de autorizacion
     para utilizar una funcion dentro de un elemento de etiqueta < > se puede hacer utilizando la funcion normal sin el parentesis final o
-    con funcion de flecha () =>, de lo contrario se ejecuta cuando se abra el elemento y no cuando se le de en el boton dentro del elemento
+    con funcion de flecha () =>, de lo contrario se ejecuta cuando se abra el elemento (formulario) y no cuando se le de en el boton dentro del elemento
+133.- Se utilizo la segunda forma para colocar el tab.pane en vez de tab menu con panes adentro (lo cual seria ideal para mantener el formato)
