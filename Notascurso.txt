@@ -42,3 +42,8 @@ Luego se crea un directorio para ejecutar las peticiones HTTP, en src/api
     para utilizar una funcion dentro de un elemento de etiqueta < > se puede hacer utilizando la funcion normal sin el parentesis final o
     con funcion de flecha () =>, de lo contrario se ejecuta cuando se abra el elemento (formulario) y no cuando se le de en el boton dentro del elemento
 133.- Se utilizo la segunda forma para colocar el tab.pane en vez de tab menu con panes adentro (lo cual seria ideal para mantener el formato)
+
+134.- La estructura para crear una pagina es Crear estructura de la pagina (lo basico, con su modal y su tab pane) > 
+    crear el api de la pagina (donde van las funciones de crear, editar, listar, eliminar entre otros) la cual llama a la 
+    uncion de utils>constants, luego se crea el componente dentro del directorio de components>Admin> {componente} el cual tendra un index, y 
+    todas las funciones que necesite (listar, eliminar, agregar y editar entre otros)

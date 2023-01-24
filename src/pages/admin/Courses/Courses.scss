@@ -1,8 +1,8 @@
 .courses-page{
     &__add{
-        display: flex;
-        justify-content: flex-end;
-        margin-bottom: 10px;
+        position: absolute;
+        right: 0;
+        top: 0;
 
         >.ui.button {
             margin:0;

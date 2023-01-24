@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import { Tab, Button } from "semantic-ui-react";
 import { BasicModal } from "../../../components/Shared";
+import { ListCourses } from "../../../components/Admin/Course";
 import "./Courses.scss";
 
 export function Courses() {
   const [showModal, setShowModal] = useState(false);
   const onOpenCloseModal = () => setShowModal((prevState) => !prevState);
+
+  const panes = [
+    {
+      render: () => (
+        <Tab.Pane attached={false}>
+          <ListCourses />
+        </Tab.Pane>
+      ),
+    },
+  ];
+
   return (
     <>
       <div className="courses-page">
@@ -14,11 +26,10 @@ export function Courses() {
             Nuevo curso
           </Button>
         </div>
-        <Tab.Pane attached={false}>
-          <p>Lista de cursos</p>
-        </Tab.Pane>
+
+        <Tab menu={{ secondary: true }} panes={panes} />
       </div>
-      <BasicModal show={showModal} close={onOpenCloseModal} title="Crear curs">
+      <BasicModal show={showModal} close={onOpenCloseModal} title="Crear curso">
         <p>Formulario para crear cursos</p>
       </BasicModal>
     </>
