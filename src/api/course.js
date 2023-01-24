@@ -12,7 +12,8 @@ export class Course {
       const response = await fetch(url);
       const result = await response.json();
 
-      if (response !== 200) throw result;
+      if (response.status !== 200) throw result;
+
       return result;
     } catch (error) {
       throw error;
