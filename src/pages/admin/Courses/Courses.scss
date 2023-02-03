@@ -8,4 +8,9 @@
             margin:0;
         }
     }
+
+    .ui.tab.segment{
+        overflow-y: scroll;
+        height: calc(100vh - 200px);
+    }
 }
