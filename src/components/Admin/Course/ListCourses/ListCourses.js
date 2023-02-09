@@ -7,7 +7,8 @@ import "./ListCourses.scss";
 
 const courseController = new Course();
 
-export function ListCourses() {
+export function ListCourses(props) {
+  const { reload, onReload } = props;
   const [courses, setCourses] = useState(false);
   const [page, setPage] = useState(1);
   const [pagination, setPagination] = useState();
@@ -15,7 +16,7 @@ export function ListCourses() {
   useEffect(() => {
     (async () => {
       try {
-        const response = await courseController.getCourses({ page, limit: 5 });
+        const response = await courseController.getCourses({ page, limit: 8 });
         setCourses(response.docs);
         setPagination({
           limit: response.limit,
@@ -27,7 +28,7 @@ export function ListCourses() {
         console.log(error);
       }
     })();
-  }, [page]);
+  }, [page, reload]);
 
   const changePage = (_, data) => {
     setPage(data.activePage);
@@ -39,7 +40,7 @@ export function ListCourses() {
   return (
     <div className="list-courses">
       {map(courses, (course) => (
-        <CourseItem key={course._id} course={course} />
+        <CourseItem key={course._id} course={course} onReload={onReload} />
       ))}
       <div className="list-courses__pagination">
         <Pagination

@@ -6,13 +6,16 @@ import "./Courses.scss";
 
 export function Courses() {
   const [showModal, setShowModal] = useState(false);
+  const [reload, setReload] = useState(false);
+
   const onOpenCloseModal = () => setShowModal((prevState) => !prevState);
+  const onReload = () => setReload((prevState) => !prevState);
 
   const panes = [
     {
       render: () => (
         <Tab.Pane attached={false}>
-          <ListCourses />
+          <ListCourses reload={reload} onReload={onReload} />
         </Tab.Pane>
       ),
     },
@@ -30,7 +33,7 @@ export function Courses() {
         <Tab menu={{ secondary: true }} panes={panes} />
       </div>
       <BasicModal show={showModal} close={onOpenCloseModal} title="Crear curso">
-        <CourseForm onClose={onOpenCloseModal} />
+        <CourseForm onClose={onOpenCloseModal} onReload={onReload} />
       </BasicModal>
     </>
   );

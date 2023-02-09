@@ -1,18 +1,37 @@
 import React, { useCallback } from "react";
-import "./CourseForm.scss";
 import { Form, Image } from "semantic-ui-react";
 import { useDropzone } from "react-dropzone";
 import { useFormik } from "formik";
+import { Course } from "../../../../api";
+import { useAuth } from "../../../../hooks";
+import { ENV } from "../../../../utils";
 import { initialValues, validationSchema } from "./CourseForm.form";
+import "./CourseForm.scss";
 
-export function CourseForm() {
+const courseController = new Course();
+
+export function CourseForm(props) {
+  const { onClose, onReload, course } = props;
+  const { accessToken } = useAuth();
+
   const formik = useFormik({
-    initialValues: initialValues(),
+    initialValues: initialValues(course),
     validationSchema: validationSchema(),
     validateOnChange: false,
     onSubmit: async (formValue) => {
       try {
-        console.log(formValue);
+        if (!course) {
+          await courseController.createCourse(accessToken, formValue);
+        } else {
+          await courseController.updateCourse(
+            accessToken,
+            course._id,
+            formValue
+          );
+        }
+
+        onReload();
+        onClose();
       } catch (error) {
         console.log(error);
       }
@@ -39,7 +58,7 @@ export function CourseForm() {
       return formik.values.miniature;
       //este if verificara si existe un archivo en el servidor, dando return a la url
     } else if (formik.values.miniature) {
-      return "";
+      return `${ENV.BASE_PATH}/${formik.values.miniature}`;
     }
     return null;
   };
@@ -79,11 +98,11 @@ export function CourseForm() {
       <Form.Group widths="equal">
         <Form.Input
           type="number"
-          name="price"
+          name="precio"
           placeholder="Precio del curso"
           onChange={formik.handleChange}
-          value={formik.values.price}
-          error={formik.errors.price}
+          value={formik.values.precio}
+          error={formik.errors.precio}
         />
         <Form.Input
           type="number"
@@ -95,7 +114,7 @@ export function CourseForm() {
         />
       </Form.Group>
       <Form.Button type="submit" primary fluid loading={formik.isSubmitting}>
-        Crear curso
+        {!course ? "Crear curso" : "Actualizar curso"}
       </Form.Button>
     </Form>
   );

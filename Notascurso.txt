@@ -48,3 +48,5 @@ Luego se crea un directorio para ejecutar las peticiones HTTP, en src/api
     uncion de utils>constants, luego se crea el componente dentro del directorio de components>Admin> {componente} el cual tendra un index, y 
     todas las funciones que necesite (listar, eliminar, agregar y editar entre otros)
 136.- Customizacion HTML a travez de la inspeccion de elemento de la pagina creando y ajustando valores en element{}
+141.- La actualización de Insomnia borró todos los request
+    (COMO HACER QUE LAS IMAGENES TENGAN UN FORMATO ADECUADO )
