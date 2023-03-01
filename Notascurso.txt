@@ -50,3 +50,4 @@ Luego se crea un directorio para ejecutar las peticiones HTTP, en src/api
 136.- Customizacion HTML a travez de la inspeccion de elemento de la pagina creando y ajustando valores en element{}
 141.- La actualización de Insomnia borró todos los request
     (COMO HACER QUE LAS IMAGENES TENGAN UN FORMATO ADECUADO )
+146.- Semantic ui-react es el que trae el elemento Pagination y Loader 
