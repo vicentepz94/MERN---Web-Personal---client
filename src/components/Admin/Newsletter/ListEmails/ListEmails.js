@@ -38,7 +38,7 @@ export function ListEmails() {
   }, [page, reload]);
 
   const changePage = (_, data) => {
-    setPage(data.activePAge);
+    setPage(data.activePage);
   };
 
   if (!emails) return <Loader active inline="centered" />;
