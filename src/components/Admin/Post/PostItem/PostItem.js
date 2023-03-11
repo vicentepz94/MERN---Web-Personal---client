@@ -6,8 +6,6 @@ import "./PostItem.scss";
 export function PostItem(props) {
   const { post } = props;
 
-  console.log(post);
-
   return (
     <>
       <div className="post-item">
