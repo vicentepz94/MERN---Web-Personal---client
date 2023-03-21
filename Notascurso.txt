@@ -51,3 +51,5 @@ Luego se crea un directorio para ejecutar las peticiones HTTP, en src/api
 141.- La actualización de Insomnia borró todos los request
     (COMO HACER QUE LAS IMAGENES TENGAN UN FORMATO ADECUADO )
 146.- Semantic ui-react es el que trae el elemento Pagination y Loader 
+153.- Instalacion de editor @tinymce/tinymce-react (para mejorar las cajas de texto como las que se usan en la generacion de un email),
+    "Se deja la configuracion previa en el curso"
