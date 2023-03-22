@@ -6,22 +6,27 @@ import { Editor } from "@tinymce/tinymce-react";
 import { useFormik } from "formik";
 import { Post } from "../../../../api";
 import { useAuth } from "../../../../hooks";
+import { ENV } from "../../../../utils";
 import { initialValues, validationSchema } from "./PostForm.form";
 import "./PostForm.scss";
 
 const postController = new Post();
 
 export function PostForm(props) {
-  const { onClose, onReload } = props;
+  const { onClose, onReload, post } = props;
   const { accessToken } = useAuth();
 
   const formik = useFormik({
-    initialValues: initialValues(),
+    initialValues: initialValues(post),
     validationSchema: validationSchema(),
     validateOnChange: false,
     onSubmit: async (formValue) => {
       try {
-        await postController.createPost(accessToken, formValue);
+        if (post) {
+          await postController.updatePost(accessToken, post._id, formValue);
+        } else {
+          await postController.createPost(accessToken, formValue);
+        }
 
         onReload();
         onClose();
@@ -35,7 +40,6 @@ export function PostForm(props) {
     const file = acceptedFile[0];
     formik.setFieldValue("miniature", URL.createObjectURL(file));
     formik.setFieldValue("file", file);
-    console.log(file);
   });
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -46,6 +50,8 @@ export function PostForm(props) {
   const getMiniature = () => {
     if (formik.values.file) {
       return formik.values.miniature;
+    } else if (formik.values.miniature) {
+      return `${ENV.BASE_PATH}/${formik.values.miniature}`;
     }
     return null;
   };
@@ -99,7 +105,7 @@ export function PostForm(props) {
       </div>
 
       <Form.Button type="submit" primary fluid loading={formik.isSubmitting}>
-        Crear post
+        {post ? "Actualizar post" : "Crear post"}
       </Form.Button>
     </Form>
   );
