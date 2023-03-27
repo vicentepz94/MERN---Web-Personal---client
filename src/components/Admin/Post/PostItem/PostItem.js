@@ -59,7 +59,7 @@ export function PostItem(props) {
         open={showConfirm}
         onCancel={onOpenCloseConfirm}
         onConfirm={onDelete}
-        content={`¿Eliminar ${post.title}?`}
+        content={`¿Eliminar: ${post.title}?`}
         size="mini"
       />
     </>
