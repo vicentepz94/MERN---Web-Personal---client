@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Icon, Image } from "semantic-ui-react";
+import { Container, Image } from "semantic-ui-react";
 import { map } from "lodash";
 import { reviewsData } from "./Reviews.data";
 import "./Reviews.scss";
