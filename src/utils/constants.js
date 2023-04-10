@@ -1,4 +1,5 @@
-const SERVER_IP = "https://mern-web-personal-server-production.up.railway.app";
+const SERVER_IP =
+  "643464a8db97f706ea147fb2--aquamarine-platypus-487ef6.netlify.app";
 
 export const ENV = {
   BASE_PATH: `http://${SERVER_IP}`,
