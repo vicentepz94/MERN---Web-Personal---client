@@ -11,7 +11,6 @@ const menuController = new Menu();
 
 export function TopBar() {
   const [menu, setMenu] = useState(null);
-  console.log(menu);
 
   useEffect(() => {
     (async () => {
