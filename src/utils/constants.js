@@ -1,4 +1,4 @@
-const SERVER_IP = "localhost:3977";
+const SERVER_IP = "https://mern-web-personal-server-production.up.railway.app";
 
 export const ENV = {
   BASE_PATH: `http://${SERVER_IP}`,
